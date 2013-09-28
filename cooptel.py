@@ -1,9 +1,10 @@
-from datetime import date
+import os
 import urllib
 import urllib2
 import re
 import base64
 import ConfigParser
+from datetime import date
 from email.mime.text import MIMEText
 from subprocess import Popen, PIPE
 
@@ -16,7 +17,7 @@ def sendMail(subject, message):
     process.communicate(message.as_string())
 
 config = ConfigParser.ConfigParser()
-config.read("./cooptel.conf")
+config.read("%s/cooptel.conf" % os.path.dirname(os.path.abspath(__file__)))
 username = config.get("Credentials", "username")
 password = config.get("Credentials", "password")
 url = 'http://www2.cooptel.qc.ca/services/temps/index.php'
