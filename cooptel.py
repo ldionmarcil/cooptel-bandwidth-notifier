@@ -47,7 +47,7 @@ if (utilisation_reg.group(2),quota_reg.group(1)) != (None,None): #response appea
     warning_percentage = int(config.get("warnings", "percentage"))
     
     if used_data_percentage > warning_percentage: #send email when true
-        message = "Used: %.2f Go. (%.2f%%) [D:%.2f|U:%.2f]" % (total_currently, used_data_percentage, download_currently, upload_currently)
+        message = "Used: %.2f Mo. (%.2f%%) [D:%.2f|U:%.2f]" % (total_currently, used_data_percentage, download_currently, upload_currently)
         sendMail("Critical bandwidth level", message)
 else:
     sendMail("Cooptel bandwidth fetcher", "Could not properly fetch Cooptel data.")
